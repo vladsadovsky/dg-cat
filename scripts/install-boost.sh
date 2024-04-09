@@ -17,3 +17,9 @@ tar -xzf boost.tar.gz
 cd "boost_$BOOST_VERSION_UNDERSCORE"
 ./bootstrap.sh --prefix="$HOME/.local"
 ./b2 install
+
+
+# Cross compilation for ARM64
+echo "using gcc : arm : aarch64-linux-gnu-g++ ;" > user_config.jam
+./bootstrap.sh --prefix=$HOME/.local/arm64-devenv/boost_arm64_install
+./b2 install toolset=gcc-arm link=static cxxflags=-fPIC --with-test --with-log --with-program_options -j32 --user-config=user_config.jam

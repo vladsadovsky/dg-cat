@@ -1,5 +1,7 @@
 cmake_minimum_required(VERSION 3.23)
 
+include(cmake/app_utils.cmake)
+
 project(
   UdpCapture
   VERSION 0.0.0
@@ -107,5 +109,9 @@ if(NOT SUBPROJECT)
   #    ${CMAKE_CURRENT_BINARY_DIR}/UdpCaptureConfigVersion.cmake
   #  DESTINATION lib/cmake/UdpCapture
   #)
-
 endif()
+
+#---------------- Diagnostic --------------------------------------------------------------
+diag_final_prop_dump()
+
+
