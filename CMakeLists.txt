@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.23)
 
 include(cmake/app_utils.cmake)
+include(cmake/CPM.cmake)
 
 project(
   UdpCapture
@@ -33,6 +34,14 @@ set(Boost_USE_DEBUG_LIBS         ON)
 set(Boost_USE_RELEASE_LIBS       ON)
 set(Boost_USE_MULTITHREADED      ON)
 set(Boost_USE_STATIC_RUNTIME    OFF)
+set(BOOST_INCLUDE_LIBRARIES filesystem asio headers)
+CPMAddPackage(
+  NAME Boost
+  VERSION 1.84.0
+  GITHUB_REPOSITORY "boostorg/boost"
+  GIT_TAG "boost-1.84.0"
+)
+
 find_package(argparse REQUIRED)
 find_package(Boost 1.84.0 REQUIRED COMPONENTS)
 if(Boost_FOUND)
